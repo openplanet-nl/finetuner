@@ -1,0 +1,8 @@
+[meta]
+name = "Finetuner"
+author = "Openplanet"
+category = "Utilities"
+
+[script]
+timeout = 0
+dependencies = [ "Camera" ]
