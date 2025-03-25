@@ -2,6 +2,7 @@
 name = "Finetuner"
 author = "Openplanet"
 category = "Utilities"
+blocks = [ "Tweaker" ]
 
 [script]
 timeout = 0
