@@ -11,9 +11,21 @@ class Toggle
 	}
 }
 
+void Main()
+{
+	startnew(NetworkAfterMainLoop).WithRunContext(Meta::RunContext::NetworkAfterMainLoop);
+}
+
+void NetworkAfterMainLoop()
+{
+	while (true) {
+		if (Setting_ZClip) { LimitRenderDistance(); }
+		yield();
+	}
+}
+
 void Render()
 {
-	if (Setting_ZClip) { LimitRenderDistance(); }
 	if (Setting_OverlayScaling) { OverlayScaling(); }
 	LevelOfDetail();
 }
