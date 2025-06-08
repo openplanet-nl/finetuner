@@ -13,7 +13,7 @@ class Toggle
 
 void Main()
 {
-	startnew(NetworkAfterMainLoop).WithRunContext(Meta::RunContext::NetworkAfterMainLoop);
+	Meta::StartWithRunContext(Meta::RunContext::NetworkAfterMainLoop, NetworkAfterMainLoop);
 }
 
 void NetworkAfterMainLoop()
