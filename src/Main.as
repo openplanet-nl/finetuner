@@ -26,7 +26,9 @@ void NetworkAfterMainLoop()
 
 void Render()
 {
+#if TMNEXT
 	if (Setting_OverlayScaling) { OverlayScaling(); }
+#endif
 	LevelOfDetail();
 }
 

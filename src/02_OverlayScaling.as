@@ -1,3 +1,4 @@
+#if TMNEXT
 [Setting category="Overlay scaling"
 	name="Override overlay scaling"
 	description="Disabling the override will not take effect until the game scene is reloaded."]
@@ -15,3 +16,4 @@ void OverlayScaling()
 		viewport.Overlays[i].m_AdaptRatio = Setting_OverlayScalingRatio;
 	}
 }
+#endif
