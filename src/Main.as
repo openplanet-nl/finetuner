@@ -19,7 +19,7 @@ void Main()
 void NetworkAfterMainLoop()
 {
 	while (true) {
-		if (Setting_ZClip) { LimitRenderDistance(); }
+		LimitRenderDistance();
 		yield();
 	}
 }
