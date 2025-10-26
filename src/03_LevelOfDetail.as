@@ -11,6 +11,6 @@ float Setting_LODScale = 1.0f;
 
 void LevelOfDetail()
 {
-	Setting_LODScale = Math::Clamp(Setting_LODScale, 0.1f, 100.0f);
+	Setting_LODScale = Math::Clamp(Setting_LODScale, 0.0f, 100.0f);
 	GetSystemConfig().Display.GeomLodScaleZ = Setting_LOD ? Setting_LODScale : 1.0f;
 }
