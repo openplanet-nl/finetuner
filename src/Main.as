@@ -30,6 +30,7 @@ void Render()
 	if (Setting_OverlayScaling) { OverlayScaling(); }
 #endif
 	LevelOfDetail();
+	SkyDome();
 
 	if (Setting_FPS && Setting_FPSWhenClosed) {
 		RenderFPS();
