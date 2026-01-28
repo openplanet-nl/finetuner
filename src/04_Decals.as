@@ -21,13 +21,13 @@ bool Setting_2dDecals = true;
 void SetDecals()
 {
 #if TMNEXT
-	GetSystemConfig().Display.Decals_3D__TextureDecals_ = Setting_Decals ? Setting_3dDecals : true;
+	GetSystemConfig().Display.Decals_3D__TextureDecals_ = Setting_3dDecals;
 #else
-	GetSystemConfig().Display.TextureDecals_3D = Setting_Decals ? Setting_3dDecals : true;
+	GetSystemConfig().Display.TextureDecals_3D = Setting_3dDecals;
 #endif
 
 #if MP4
-	GetSystemConfig().Display.TextureDecals_2D = Setting_Decals ? Setting_2dDecals : true;
+	GetSystemConfig().Display.TextureDecals_2D = Setting_2dDecals;
 #endif
 }
 #endif
