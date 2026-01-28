@@ -29,6 +29,9 @@ void Render()
 #if TMNEXT
 	if (Setting_OverlayScaling) { OverlayScaling(); }
 #endif
+#if !FOREVER
+	SetDecals();
+#endif
 	LevelOfDetail();
 
 	if (Setting_FPS && Setting_FPSWhenClosed) {
@@ -52,6 +55,11 @@ void RenderMenu()
 		if (UI::MenuItem(Icons::Cube + " Level of detail", Setting_LODShortcut.ToString(), Setting_LOD)) {
 			Setting_LOD = !Setting_LOD;
 		}
+#if !FOREVER
+		if (UI::MenuItem(Icons::PaintBrush + " Decals", Setting_DecalsShortcut.ToString(), Setting_Decals)) {
+			Setting_Decals = !Setting_Decals;
+		}
+#endif
 		if (UI::MenuItem(Icons::LineChart + " FPS", Setting_FPSShortcut.ToString(), Setting_FPS)) {
 			Setting_FPS = !Setting_FPS;
 		}

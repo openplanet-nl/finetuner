@@ -32,6 +32,11 @@ Shortcut Setting_ZClipShortcut;
 [Setting category="Shortcuts" name="LOD"]
 Shortcut Setting_LODShortcut;
 
+#if !FOREVER
+[Setting category="Shortcuts" name="Decals"]
+Shortcut Setting_DecalsShortcut;
+#endif
+
 [Setting category="Shortcuts" name="FPS"]
 Shortcut Setting_FPSShortcut;
 
@@ -40,5 +45,8 @@ UI::InputBlocking OnKeyPress(bool down, VirtualKey key)
 	Setting_ZClip = Setting_ZClipShortcut.GetNewValue(Setting_ZClip, down, key);
 	Setting_LOD = Setting_LODShortcut.GetNewValue(Setting_LOD, down, key);
 	Setting_FPS = Setting_FPSShortcut.GetNewValue(Setting_FPS, down, key);
+#if !FOREVER
+	Setting_Decals = Setting_DecalsShortcut.GetNewValue(Setting_Decals, down, key);
+#endif
 	return UI::InputBlocking::DoNothing;
 }
