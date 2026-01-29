@@ -30,7 +30,7 @@ void Render()
 	if (Setting_OverlayScaling) { OverlayScaling(); }
 #endif
 #if !FOREVER
-	SetDecals();
+	if (Setting_Decals) { SetDecals(); }
 #endif
 	LevelOfDetail();
 
