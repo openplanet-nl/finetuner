@@ -33,6 +33,7 @@ void Render()
 	if (Setting_Decals) { SetDecals(); }
 #endif
 	LevelOfDetail();
+	SkyDome();
 
 	if (Setting_FPS && Setting_FPSWhenClosed) {
 		RenderFPS();
