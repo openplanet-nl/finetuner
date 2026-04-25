@@ -32,23 +32,37 @@ void LimitRenderDistance()
 	//NOTE: For TMF, we don't use GetCurrent here, but FindCurrent (a more expensive operation).
 	//      This is to make sure we always have an accurate up-to-date camera at this point in time.
 	//      It's possible for this to get called while the camera is already destroyed.
-	auto camera = Camera::FindCurrent();
+	array<CHmsCamera@> cameras = {Camera::FindCurrent()};
+#elif MP4
+	array<CHmsCamera@> cameras = {Camera::GetCurrent()};
 #else
-	auto camera = Camera::GetCurrent();
+	array<CHmsCamera@> cameras;
+	auto viewport = GetApp().Viewport;
+
+	// Get all cameras to make the render distance limit work with splitscreen
+	for (int i = int(viewport.Cameras.Length) - 1; i >= 0; i--) {
+		auto camera = viewport.Cameras[i];
+		if (camera.m_IsOverlay3d) {
+			continue;
+		}
+		cameras.InsertLast(camera);
+	}
 #endif
-	if (camera is null) {
+	if (cameras.Length == 0 || cameras[0] is null) {
 		return;
 	}
 
-	if (!Setting_ZClip) {
+	for (uint8 i = 0; i < cameras.Length; i++) {
+		if (!Setting_ZClip) {
 #if FOREVER
-		// TMF expects FarZ to be reset to its default
-		camera.FarZ = 50000;
+			// TMF expects FarZ to be reset to its default
+			cameras[i].FarZ = 50000;
 #endif
-		return;
-	}
+			return;
+		}
 
-	camera.FarZ = Setting_ZClipDistance;
+		cameras[i].FarZ = Setting_ZClipDistance;
+	}
 
 #if !FOREVER
 	if (Setting_ZClipAsyncRender && GetApp().Editor is null) {
